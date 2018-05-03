@@ -1,0 +1,40 @@
+<div class="task">
+    <md-card>
+        <md-button class="md-fab md-mini step" aria-label="Step No" style="background-color: #{{$ctrl.sbTask.color}}">
+            {{$ctrl.sbTask.step}}
+            <span class="sub-step" ng-show="$ctrl.sbTask.subStep">.{{$ctrl.sbTask.subStep}}</span>
+        </md-button>
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">
+                    <span class="task-name">{{$ctrl.sbTask.name}}</span>
+                    <span class="status">
+                        <i class="material-icons md-24" title="Done" ng-show="$ctrl.sbTask.progress==100" ng-style="{color: 'green'}">check</i>
+                        <i class="material-icons md-24" title="In Progress" ng-show="$ctrl.sbTask.progress==50" ng-style="{color: 'rgba(0,0,0,0.5)'}">autorenew</i>
+                        <i class="material-icons md-24" title="To Do" ng-show="$ctrl.sbTask.progress==0" ng-style="{color: 'red'}">panorama_fish_eye</i>
+                    </span>
+                </span>
+            </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="column" layout-align="space-between">
+            <div class="progress">
+                <div class="action">
+                    <md-input-container>
+                        <md-select aria-label="status" ng-model="$ctrl.progress" class="md-no-underline" ng-change="$ctrl.updateTaskProgress($ctrl.sbTask)">
+                            <md-option ng-value="option.progress" ng-repeat="option in $ctrl.taskStatus" ng-selected="$ctrl.sbTask.progress == option.progress">
+                                {{ option.status }}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                    <p ng-show="$ctrl.sbTaskError" class="red">Changes couldn't be saved.</p>
+                </div>
+                <md-progress-linear title="{{$ctrl.sbTask.progress}}%" md-mode="determinate" value="{{$ctrl.sbTask.progress}}" aria-valuemax="100"
+                    aria-valuenow="{{$ctrl.sbTask.progress}}"></md-progress-linear>
+                <div class="timings">
+                    <div class="start" title="Start Time">{{$ctrl.sbTask.utcStart | date: 'MMM dd, yyyy HH:mm'}}</div>
+                    <div class="end" title="End Time">{{$ctrl.sbTask.utcEnd | date: "MMM dd, yyyy HH:mm"}}</div>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>

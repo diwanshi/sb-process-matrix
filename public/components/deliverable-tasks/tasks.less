@@ -1,0 +1,57 @@
+.task {
+    width: 200px;
+    .sub-step {
+        margin-left: -5px;
+    }
+    .task-name {
+      font-size: 16px;
+      text-transform: capitalize;
+      line-height: normal;
+      flex: 0 60%;
+    }
+    .status {
+      margin-right: 2px;
+    }
+    .md-headline {
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .details {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    .step {
+      transform: translate(-5px,-25px);
+      margin-bottom: -30px;
+    }
+    .parallel-steps-count {
+      float: right;
+      color: rgba(0,0,0,0.6);
+    }
+    .progress {
+      .action {
+        font-size: 14px;
+      }
+      .timings {
+        display: flex;
+        margin-top: 5px;
+        .start {
+          font-size: 10px;
+          width: 50%;
+        }
+        .end {
+          font-size: 10px;
+          width: 50%;
+          margin-left: 20px;
+        }
+      }
+    }
+    .material-icons.md-24 { 
+      font-size: 24px; 
+      font-weight: 900;
+    }
+  }
