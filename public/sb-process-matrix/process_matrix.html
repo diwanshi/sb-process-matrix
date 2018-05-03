@@ -6,14 +6,26 @@
       <p>Content: 50 deliverables all having the same process with 8 steps</p>
     </div>
   </md-card-title>
-
-  <md-card-content layout="row" layout-align="space-between">
-
-    <div ng-repeat="deliverable in $ctrl.sbModel">
-       :: ->> {{deliverable.name}}
-    </div>
-
+  <md-card-content layout="row" layout-align="space-between" class="deliverables">
+    <md-list class="list">
+      <md-list-item class="content m-t-20" ng-repeat="deliverable in $ctrl.sbModel">
+        <div class="details">
+          <p class="name">
+            <span>{{deliverable.name}}</span>
+          </p>
+          <p class="meta">Code:</p>
+          <p class="data">{{deliverable.code}}</p>
+          <p class="meta">Category: </p>
+          <p class="data">{{deliverable.category}}</p>
+          <p class="meta">Created at:</p>
+          <p class="data">{{deliverable.utcDate | date: 'MMM dd, yyyy HH:mm:ss'}}</p>
+        </div>
+        <div ng-repeat="step in deliverable.activitiesWithSubTasks" style="display: flex;">
+          <sb-deliverable-task sb-task="task" sb-task-actions="$ctrl.sbTaskActions" ng-repeat="task in step | orderBy: 'step'"></sb-deliverable-task>
+        </div>
+        <md-divider></md-divider>
+      </md-list-item>
+    </md-list>
   </md-card-content>
 
 </md-card>
-
